@@ -5,7 +5,7 @@ module.exports = {
   filename: "remoteEntry.js",
   remotes: {},
   exposes: {
-    "./MicrofrontendRoutes": "./src/components/routes/MfeAppsRouter.tsx",
+    "./MicrofrontendRoutes": "./src/components/routes/MfaRouter.tsx",
     "./MicrofrontendReducers": "./src/store/slices",
   },
   shared: {

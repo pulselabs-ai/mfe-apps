@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { MfeAppRoutes } from "./MfeAppsRoute";
+import { MfaAppRoutes } from "./MfaRoute";
 
-const MfeAppsRouter = () => {
+const MfaRouter = () => {
   const renderRoutes = (routeList: any, parentPath = "") => {
     return routeList.map((route: any) => {
       const fullPath = parentPath
@@ -19,7 +19,7 @@ const MfeAppsRouter = () => {
     });
   };
 
-  return <Routes>{renderRoutes(MfeAppRoutes)}</Routes>;
+  return <Routes>{renderRoutes(MfaAppRoutes)}</Routes>;
 };
 
-export default MfeAppsRouter;
+export default MfaRouter;

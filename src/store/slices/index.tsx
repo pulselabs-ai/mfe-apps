@@ -1,1 +1,1 @@
-export const MfeAppsReducers = {};
+export const MfaReducers = {};
