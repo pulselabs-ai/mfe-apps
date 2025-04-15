@@ -1,0 +1,8 @@
+@import ".././styles/MfeApps.scss";
+
+.mfe-apps-title {
+  @extend .headline-xl;
+  @extend .text-primary;
+  padding: 20px;
+  background-color: var(--color-fill-selected);
+}

@@ -1,0 +1,6 @@
+{
+  "plugins": ["./stylelint-prefix-check-plugin.js"],
+  "rules": {
+    "custom/parent-selector-prefix-check": true
+  }
+}

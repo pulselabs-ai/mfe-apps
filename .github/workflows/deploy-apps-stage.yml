@@ -1,0 +1,54 @@
+name: deploy-apps-stage
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - stage-branch
+    paths:
+      - "**/**"
+      - "**/.github/workflows/deploy-apps-stage.yml"
+
+concurrency: deploy-apps-stage
+jobs:
+  deploy-stage:
+    name: deploy-apps-stage
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+
+    env:
+      DASHBOARD_S3_BUCKET: "<s3-bucket-name>" # Replace with actual stage S3 bucket name
+      DASHBOARD_CDN_DISTRIBUTION_ID: "<cdn-distribution-id>" # Replace with actual stage CDN distribution ID
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.11.1"
+          registry-url: "https://npm.pkg.github.com/"
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
+
+      - name: Log in to GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PULSE_NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Setup dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: build
+        run: yarn run release:stage
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_STAGE_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_STAGE_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: deploy
+        run: |
+          aws s3 rm s3://${{ env.DASHBOARD_S3_BUCKET }}/ --recursive
+          aws s3 cp [app-build-path] s3://${{ env.DASHBOARD_S3_BUCKET }} --cache-control 'public, max-age=31104000' --recursive
+          aws configure set preview.cloudfront true
+          aws cloudfront create-invalidation --distribution-id ${{ env.DASHBOARD_CDN_DISTRIBUTION_ID }} --paths "/*"

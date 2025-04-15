@@ -1,0 +1,36 @@
+name: verify-apps-build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - stage-branch
+  pull_request:
+    branches:
+      - stage-branch
+concurrency: verify-apps-build
+jobs:
+  verify-apps-build:
+    name: verify-apps-build
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.11.1"
+          registry-url: "https://npm.pkg.github.com/"
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
+
+      - name: Log in to GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PULSE_NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Setup dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: build
+        run: yarn run release:stage

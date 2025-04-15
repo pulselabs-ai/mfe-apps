@@ -1,0 +1,17 @@
+@import "@pulselabs-ai/shared-fe-ui/src/assets/content/Typography.scss";
+@import "@pulselabs-ai/shared-fe-ui/src/assets/content/mixin.scss";
+@import "@pulselabs-ai/shared-fe-ui/src/assets/content/Colors/index.scss";
+@import "@pulselabs-ai/shared-fe-ui/src/assets/content/Fonts/Font.scss";
+@import "@pulselabs-ai/shared-fe-ui/src/assets/content2024/stylesSCSS";
+
+.mfe-apps- {
+  * {
+    box-sizing: border-box;
+  }
+
+  body,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
