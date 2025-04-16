@@ -9,10 +9,6 @@ export const MfaAppRoutes = [
     element: <MfaAppsPage />,
   },
   {
-    path: '/app',
-    element: <MfaAppsPage />,
-  },
-  {
     path: MfaRoutes.APP_SETTINGS,
     element: <MfaAppSettingsPage />,
   },

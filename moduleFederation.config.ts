@@ -1,12 +1,12 @@
 let { dependencies } = require("./package.json");
 
 module.exports = {
-  name: "microFrontendBase",
+  name: "mfa",
   filename: "remoteEntry.js",
   remotes: {},
   exposes: {
-    "./MicrofrontendRoutes": "./src/components/routes/MfaRouter.tsx",
-    "./MicrofrontendReducers": "./src/store/slices",
+    "./MfaRoutes": "./src/components/routes/MfaRouter.tsx",
+    "./MfaReducers": "./src/store/slices",
   },
   shared: {
     ...dependencies,
