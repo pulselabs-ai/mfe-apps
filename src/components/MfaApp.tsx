@@ -10,7 +10,6 @@ function MfaApp() {
     <>
       <Routes>
         <Route path="/" element={<MfaAppsPage />} />
-        <Route path="/app" element={<MfaAppsPage />} />
         <Route
           path="/app/:appId/settings"
           element={<MfaAppSettingsPage />}

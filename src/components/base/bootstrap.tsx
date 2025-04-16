@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { MfaStore } from "../../store/MfaStore";
-import MfaRouter from "../routes/MfaRouter";
+import MfaRouter from "../../components/routes/MfaRouter";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={MfaStore}>
-      <MfaRouter />
+      <MfaRouter /> 
     </Provider>
   </BrowserRouter>,
 );
