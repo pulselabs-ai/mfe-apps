@@ -6,6 +6,7 @@ module.exports = {
   remotes: {},
   exposes: {
     "./MfaRoutes": "./src/components/routes/MfaRouter.tsx",
+    "./MfaApp": "./src/components/MfaApp.tsx",
     "./MfaReducers": "./src/store/slices",
   },
   shared: {
