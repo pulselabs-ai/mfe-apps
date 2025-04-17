@@ -8,7 +8,16 @@ const MfaAppsPage: React.FC = () => {
 
   return (
     <div className="mfa-page">
-      <div className="headline-xl">Apps Page</div>
+      <div className="headline-xl">Apps</div>
+      <PulseButton
+        theme={PulseButtonTheme.PRIMARY}
+        size={PulseButtonSizes.LARGE}
+        onClick={() => {
+          navigate("/app");
+        }}
+      >
+        navigate("app");
+      </PulseButton>
       <PulseButton
         theme={PulseButtonTheme.PRIMARY}
         size={PulseButtonSizes.LARGE}
@@ -31,7 +40,7 @@ const MfaAppsPage: React.FC = () => {
         theme={PulseButtonTheme.PRIMARY}
         size={PulseButtonSizes.LARGE}
         onClick={() => {
-          navigate("/app/123/settings");
+          navigate("/projects/10");
         }}
       >
         navigate("/projects/10");

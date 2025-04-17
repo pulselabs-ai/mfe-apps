@@ -7,23 +7,19 @@ import { MfaAppPage } from "./pages/MfaAppPage/MfaAppPage";
 
 function MfaApp() {
   const location = useLocation();
-  console.log("MfaApp Path:", location.pathname);
 
   return (
     <>
-      <div style={{ backgroundColor: "lightblue", padding: "5px", marginBottom: "10px" }}>
-        DEBUG: MfaApp Path: {location.pathname}
-      </div>
       <Routes>
         <Route path="/" element={<MfaAppsPage />} />
-        <Route path="/app/:appId" element={<MfaAppPage />} />
+        <Route path="/:appId" element={<MfaAppPage />} />
         <Route
-          path="/app/:appId/settings"
+          path="/:appId/settings"
           element={<MfaAppSettingsPage />}
         />
         
         {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
-        <Route path="*" element={<div>Not Found in MfaApp</div>} />
+        <Route path="*" element={<div>Not Found in MfaApp {location.pathname} </div>} />
       </Routes>
     </>
   );
