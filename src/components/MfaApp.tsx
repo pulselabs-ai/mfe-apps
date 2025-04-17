@@ -10,12 +10,14 @@ function MfaApp() {
     <>
       <Routes>
         <Route path="/" element={<MfaAppsPage />} />
+        <Route path="/app/:appId" element={<MfaAppPage />} />
         <Route
           path="/app/:appId/settings"
           element={<MfaAppSettingsPage />}
         />
-        <Route path="/app/:appId" element={<MfaAppPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        
+        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+        <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </>
   );

@@ -1,7 +1,7 @@
 let { dependencies } = require("./package.json");
 
 module.exports = {
-  name: "mfa",
+  name: "MfaApp",
   filename: "remoteEntry.js",
   remotes: {},
   exposes: {
