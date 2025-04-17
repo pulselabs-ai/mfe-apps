@@ -1,7 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { MfaAppRoutes } from "./MfaRoute";
 
 const MfaRouter = () => {
+  const location = useLocation();
+  console.log("MFE Received Path:", location.pathname);
+
   const renderRoutes = (routeList: any, parentPath = "") => {
     return routeList.map((route: any) => {
       const fullPath = parentPath
@@ -19,7 +22,14 @@ const MfaRouter = () => {
     });
   };
 
-  return <Routes>{renderRoutes(MfaAppRoutes)}</Routes>;
+  return (
+    <>
+      {/* <div style={{ backgroundColor: "lightyellow", padding: "5px", marginBottom: "10px" }}>
+        DEBUG: MFE Base Path: {location.pathname}
+      </div> */}
+      <Routes>{renderRoutes(MfaAppRoutes)}</Routes>
+    </>
+  );
 };
 
 export default MfaRouter;
